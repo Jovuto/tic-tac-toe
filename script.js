@@ -1,22 +1,45 @@
-let gameBoard = {
-    gameBoardArr: [],
-}
+const gameFlow = (function () {
 
-let playerOne = {
+    const playersArray = [];
 
-}
+    function createPlayers() {
 
-let playerTwo = {
+        for (i = 0 ; i < 2 ; i++) {
 
-}
+            let player = prompt(`Enter player ${i + 1}'s name.`);
+            playersArray.push({player: i + 1, name: player});
 
-let gameFlow = {
+        }
 
-}
+        console.log(`Player 1 is ${playersArray[0].name} and player 2 is ${playersArray[1].name}`);
+
+    }
+
+    createPlayers();
+
+})();
 
 /* 
 1. Create player 1 with a name
 2. Create player 2 with a name
+
+gameFlow function {
+
+playersArray
+
+createPlayers function {
+
+loop that runs twice {
+
+prompt "enter player {loop number}'s name"
+push player{player: loop number, name: prompt data} to playersArray
+
+}
+
+}
+
+}
+
 3. Print the board with who's turn it is above the board
 4. Player 1 selects a cell
 5. An O appears on the cell player 1 selects
