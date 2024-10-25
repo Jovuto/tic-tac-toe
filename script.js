@@ -1,6 +1,7 @@
 const gameFlow = (function () {
 
     const playersArray = [];
+    const playerTurn = 1;
 
     function createPlayers() {
 
@@ -16,6 +17,21 @@ const gameFlow = (function () {
     }
 
     createPlayers();
+    whosTurnIsIt();
+
+    function whosTurnIsIt() {
+
+        console.log(`It's ${playersArray[playerTurn - 1].name}'s turn!`);
+
+    }
+
+    function turnOrder() {
+
+        if (playerTurn === 1) { playerTurn = 2 }
+        else { playerTurn = 1 };
+        whosTurnIsIt();
+
+    }
 
 })();
 
@@ -41,6 +57,13 @@ push player{player: loop number, name: prompt data} to playersArray
 }
 
 3. Print the board with who's turn it is above the board
+
+Create variable for playerTurn
+
+Player 1 at the start and alternate using an if statement
+
+Print out who's turn it is 
+
 4. Player 1 selects a cell
 5. An O appears on the cell player 1 selects
 6. The game turn goes to player 2 with player 2's name above the board
