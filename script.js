@@ -2,7 +2,7 @@ const gameFlow = (function () {
 
     const playersArray = [];
     const playerTurn = 1;
-    const gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
+    let gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
 
     function createPlayers() {
 
@@ -21,10 +21,26 @@ const gameFlow = (function () {
     whosTurnIsIt();
     console.log(gameBoard);
 
+    function printGameBoard() {
+        console.log(gameBoard);
+    }
+
     function whosTurnIsIt() {
 
         console.log(`It's ${playersArray[playerTurn - 1].name}'s turn!`);
 
+    }
+
+    function oOrX() {
+        if (playerTurn === 1) {
+            return "O";
+        } else return "X";
+    }
+
+    function gameTurn(xPlace, yPlace) {
+        console.log(gameBoard[yPlace - 1][xPlace - 1]);
+        gameBoard[yPlace - 1][xPlace - 1] = oOrX();
+        printGameBoard();
     }
 
     function turnOrder() {
@@ -34,6 +50,8 @@ const gameFlow = (function () {
         whosTurnIsIt();
 
     }
+
+    return { gameTurn };
 
 })(); 
 
