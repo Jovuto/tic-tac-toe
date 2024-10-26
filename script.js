@@ -45,6 +45,7 @@ const gameFlow = (function () {
             return;
         }
         gameBoard[yPlace - 1][xPlace - 1] = oOrX();
+        detectWin();
         turnOrder();
     }
 
@@ -54,6 +55,18 @@ const gameFlow = (function () {
         else { playerTurn = 1 };
         whosTurnIsIt();
 
+    }
+
+    function detectWin() {
+        console.log("Detecting win");
+        gameBoard.forEach((item) =>  {
+            if (item.every((item) => {
+                return item == 'O' || item == 'X';
+            })) {
+                console.log("SOMEONE HAS WON WITH A ROW!!!");
+                return; 
+            }
+        });
     }
 
     return { gameTurn, gameBoard };
@@ -100,8 +113,10 @@ Print the gameBoard array
 
 7. Player 2 selects a cell
 8. An X appears on the cell player 2 selects
+
 9. Play goes on until there is three in a row
 10. Once a three in a row is detected, a message appears saying "Player (1/2) wins!"
+
 11. The players are given an option to play again
 12. If selected, the game resets
 */
