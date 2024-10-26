@@ -2,6 +2,7 @@ const gameFlow = (function () {
 
     const playersArray = [];
     const playerTurn = 1;
+    const gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
 
     function createPlayers() {
 
@@ -18,6 +19,7 @@ const gameFlow = (function () {
 
     createPlayers();
     whosTurnIsIt();
+    console.log(gameBoard);
 
     function whosTurnIsIt() {
 
@@ -33,7 +35,7 @@ const gameFlow = (function () {
 
     }
 
-})();
+})(); 
 
 /* 
 1. Create player 1 with a name
@@ -64,8 +66,11 @@ Player 1 at the start and alternate using an if statement
 
 Print out who's turn it is 
 
+Print the gameBoard array
+
 4. Player 1 selects a cell
 5. An O appears on the cell player 1 selects
+
 6. The game turn goes to player 2 with player 2's name above the board
 7. Player 2 selects a cell
 8. An X appears on the cell player 2 selects
