@@ -19,10 +19,11 @@ const gameFlow = (function () {
 
     createPlayers();
     whosTurnIsIt();
-    console.log(gameBoard);
+    printGameBoard();
 
     function printGameBoard() {
         console.log(gameBoard);
+        console.log("Use the gameTurn() command to play you turn. Input = x coordinate, y coordinate");
     }
 
     function whosTurnIsIt() {
@@ -38,7 +39,11 @@ const gameFlow = (function () {
     }
 
     function gameTurn(xPlace, yPlace) {
-        console.log(gameBoard[yPlace - 1][xPlace - 1]);
+        console.log(gameBoard[yPlace - 1][xPlace - 1] === "X" || "O");
+        if (gameBoard[yPlace - 1][xPlace - 1] === "X" || gameBoard[yPlace - 1][xPlace - 1] === "O") {
+            console.error("The square must be empty to place X or O");
+            return;
+        }
         gameBoard[yPlace - 1][xPlace - 1] = oOrX();
         printGameBoard();
     }
@@ -51,7 +56,7 @@ const gameFlow = (function () {
 
     }
 
-    return { gameTurn };
+    return { gameTurn, gameBoard };
 
 })(); 
 
@@ -89,7 +94,10 @@ Print the gameBoard array
 4. Player 1 selects a cell
 5. An O appears on the cell player 1 selects
 
+5.5: Check if the square isn't already filled in
+
 6. The game turn goes to player 2 with player 2's name above the board
+
 7. Player 2 selects a cell
 8. An X appears on the cell player 2 selects
 9. Play goes on until there is three in a row
