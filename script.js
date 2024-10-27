@@ -71,11 +71,17 @@ const gameFlow = (function () {
             }
         });
         for (col = 0 ; col < 3 ; col++){
-            let columnWin = true;
+            let columnWin;
+            let columnCheck = [];
+            columnCheck = [];
             for (row = 0 ; row < 3 ; row++) {
+                columnCheck.push(gameBoard[row][col]);
+                console.log(columnCheck);
                 if (gameBoard[row][col] === "E") { columnWin = false; break; }
             }
-            if (columnWin === true) console.log("SOMEONE HAS WON!!!");
+            if (columnCheck.every((item) => item == "X") || columnCheck.every((item) => item == "O")) {
+                console.log("SOMEONE HAS WON!!!");
+            }
         }
     }
 
