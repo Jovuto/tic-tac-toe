@@ -61,12 +61,22 @@ const gameFlow = (function () {
         console.log("Detecting win");
         gameBoard.forEach((item) =>  {
             if (item.every((item) => {
-                return item == 'O' || item == 'X';
-            })) {
-                console.log("SOMEONE HAS WON WITH A ROW!!!");
+                return item == 'O';
+            }) || 
+            (item.every((item) => {
+                return item == 'X';
+            }))) {
+                console.log("SOMEONE HAS WON!!!");
                 return; 
             }
         });
+        for (col = 0 ; col < 3 ; col++){
+            let columnWin = true;
+            for (row = 0 ; row < 3 ; row++) {
+                if (gameBoard[row][col] === "E") { columnWin = false; break; }
+            }
+            if (columnWin === true) console.log("SOMEONE HAS WON!!!");
+        }
     }
 
     return { gameTurn, gameBoard };
