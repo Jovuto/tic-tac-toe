@@ -1,6 +1,6 @@
 const gameFlow = (function () {
 
-    const playersArray = [];
+    let playersArray = [];
     let playerTurn = 1;
     let gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
 
@@ -14,11 +14,11 @@ const gameFlow = (function () {
         }
 
         console.log(`Player 1 is ${playersArray[0].name} and player 2 is ${playersArray[1].name}`);
+        whosTurnIsIt();
 
     }
 
     createPlayers();
-    whosTurnIsIt();
 
     function printGameBoard() {
         console.log(gameBoard);
@@ -110,7 +110,14 @@ const gameFlow = (function () {
         console.log(`Congratulations ${whoWon}!! You won! Would you like to play again? Just use the reset command.`);
     }
 
-    return { gameTurn, gameBoard };
+    function resetGame() {
+        playersArray = [];
+        playerTurn = 1;
+        gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
+        createPlayers();
+    }
+
+    return { gameTurn, gameBoard, resetGame };
 
 })(); 
 
