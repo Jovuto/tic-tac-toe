@@ -1,5 +1,14 @@
 const gameFlow = (function () {
 
+    let title = document.querySelector(".title")
+
+    function render(what, where) {
+
+        where.innerHTML = '';
+        where.innerHTML = what;
+
+    }
+
     let playersArray = [];
     let playerTurn = 1;
     let gameBoard = [["E","E","E"],["E","E","E"],["E","E","E"]];
@@ -14,6 +23,7 @@ const gameFlow = (function () {
         }
 
         console.log(`Player 1 is ${playersArray[0].name} and player 2 is ${playersArray[1].name}`);
+        render(`<h2> Player 1 is ${playersArray[0].name} and player 2 is ${playersArray[1].name} </h2>`, title);
         whosTurnIsIt();
 
     }
