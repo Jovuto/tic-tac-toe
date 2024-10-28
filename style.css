@@ -12,8 +12,16 @@
 
 .square {
     border: black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .square:hover {
     background-color: yellow;
+}
+
+.xAndO {
+    font-size: 100px;
+    font-family: sans-serif;
 }

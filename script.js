@@ -2,6 +2,7 @@ const gameFlow = (function () {
 
     const title = document.querySelector(".title")
     const subtitle = document.querySelector(".subtitle");
+    const gameBoardDOM = document.querySelector(".gameBoard");
 
     function render(what, where) {
 
@@ -35,6 +36,11 @@ const gameFlow = (function () {
         console.log(gameBoard);
         console.log("Use the gameTurn() command to play your turn. Input = x coordinate, y coordinate");
     }
+
+    gameBoardDOM.addEventListener("click", function (e) {
+            gameTurn(e.target.dataset.x, e.target.dataset.y);
+            render(`<p class="xAndO">${oOrX()} </p>`, e.target);
+    });
 
     function whosTurnIsIt() {
 
