@@ -1,6 +1,7 @@
 const gameFlow = (function () {
 
-    let title = document.querySelector(".title")
+    const title = document.querySelector(".title")
+    const subtitle = document.querySelector(".subtitle");
 
     function render(what, where) {
 
@@ -32,12 +33,13 @@ const gameFlow = (function () {
 
     function printGameBoard() {
         console.log(gameBoard);
-        console.log("Use the gameTurn() command to play you turn. Input = x coordinate, y coordinate");
+        console.log("Use the gameTurn() command to play your turn. Input = x coordinate, y coordinate");
     }
 
     function whosTurnIsIt() {
 
         console.log(`It's ${playersArray[playerTurn - 1].name}'s turn!`);
+        render(`<p>It's ${playersArray[playerTurn - 1].name}'s turn!</p>`, subtitle);
         printGameBoard();
         return playersArray[playerTurn - 1].name;
 
