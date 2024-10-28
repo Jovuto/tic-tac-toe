@@ -46,7 +46,6 @@ const gameFlow = (function () {
         }
         gameBoard[yPlace - 1][xPlace - 1] = oOrX();
         detectWin();
-        turnOrder();
     }
 
     function turnOrder() {
@@ -70,19 +69,38 @@ const gameFlow = (function () {
                 return; 
             }
         });
+
         for (col = 0 ; col < 3 ; col++){
-            let columnWin;
             let columnCheck = [];
             columnCheck = [];
             for (row = 0 ; row < 3 ; row++) {
                 columnCheck.push(gameBoard[row][col]);
                 console.log(columnCheck);
-                if (gameBoard[row][col] === "E") { columnWin = false; break; }
+                if (gameBoard[row][col] === "E") break;
             }
             if (columnCheck.every((item) => item == "X") || columnCheck.every((item) => item == "O")) {
                 console.log("SOMEONE HAS WON!!!");
             }
         }
+
+        let diagonalWin;
+        diagonalWin = true;
+        let leftDiagonal;
+        let rightDiagonal;
+        leftDiagonal = [];
+        rightDiagonal = [];
+
+        for (diag = 0, rdiag = 2 ; diag < 3 ; diag++, rdiag--) {
+            leftDiagonal.push(gameBoard[diag][diag]);
+            rightDiagonal.push(gameBoard[diag][rdiag]);
+            if ((gameBoard[diag][diag] === "E") && (gameBoard[diag][rdiag] === "E")) break; 
+        }
+        if (leftDiagonal.every((item) => item == "X") || leftDiagonal.every((item) => item == "O") || 
+            rightDiagonal.every((item) => item == "X") || rightDiagonal.every((item) => item == "O")) {
+            console.log("SOMEONE HAS WON!!!");
+        }
+
+        turnOrder();
     }
 
     return { gameTurn, gameBoard };
