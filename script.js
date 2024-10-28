@@ -29,6 +29,7 @@ const gameFlow = (function () {
 
         console.log(`It's ${playersArray[playerTurn - 1].name}'s turn!`);
         printGameBoard();
+        return playersArray[playerTurn - 1].name;
 
     }
 
@@ -65,7 +66,7 @@ const gameFlow = (function () {
             (item.every((item) => {
                 return item == 'X';
             }))) {
-                console.log("SOMEONE HAS WON!!!");
+                endGame(whosTurnIsIt());
                 return; 
             }
         });
@@ -79,7 +80,8 @@ const gameFlow = (function () {
                 if (gameBoard[row][col] === "E") break;
             }
             if (columnCheck.every((item) => item == "X") || columnCheck.every((item) => item == "O")) {
-                console.log("SOMEONE HAS WON!!!");
+                endGame(whosTurnIsIt());
+                return;
             }
         }
 
@@ -97,10 +99,15 @@ const gameFlow = (function () {
         }
         if (leftDiagonal.every((item) => item == "X") || leftDiagonal.every((item) => item == "O") || 
             rightDiagonal.every((item) => item == "X") || rightDiagonal.every((item) => item == "O")) {
-            console.log("SOMEONE HAS WON!!!");
+                endGame(whosTurnIsIt());
+                return;
         }
 
         turnOrder();
+    }
+
+    function endGame(whoWon) {
+        console.log(`Congratulations ${whoWon}!! You won! Would you like to play again? Just use the reset command.`);
     }
 
     return { gameTurn, gameBoard };
