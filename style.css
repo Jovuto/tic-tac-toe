@@ -13,3 +13,7 @@
 .square {
     border: black solid;
 }
+
+.square:hover {
+    background-color: yellow;
+}
