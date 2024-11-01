@@ -3,6 +3,9 @@ const gameFlow = (function () {
     const title = document.querySelector(".title")
     const subtitle = document.querySelector(".subtitle");
     const gameBoardDOM = document.querySelector(".gameBoard");
+    const allSquares = document.querySelectorAll(".square");
+    const resetDialog = document.querySelector("dialog");
+    const resetButton = document.querySelector("button");
 
     function render(what, where) {
 
@@ -38,8 +41,8 @@ const gameFlow = (function () {
     }
 
     gameBoardDOM.addEventListener("click", function (e) {
-            gameTurn(e.target.dataset.x, e.target.dataset.y);
             render(`<p class="xAndO">${oOrX()} </p>`, e.target);
+            gameTurn(e.target.dataset.x, e.target.dataset.y);
     });
 
     function whosTurnIsIt() {
@@ -58,7 +61,6 @@ const gameFlow = (function () {
     }
 
     function gameTurn(xPlace, yPlace) {
-        console.log(gameBoard[yPlace - 1][xPlace - 1] === "X" || "O");
         if (gameBoard[yPlace - 1][xPlace - 1] === "X" || gameBoard[yPlace - 1][xPlace - 1] === "O") {
             console.error("The square must be empty to place X or O");
             return;
@@ -76,7 +78,6 @@ const gameFlow = (function () {
     }
 
     function detectWin() {
-        console.log("Detecting win");
         gameBoard.forEach((item) =>  {
             if (item.every((item) => {
                 return item == 'O';
@@ -94,7 +95,6 @@ const gameFlow = (function () {
             columnCheck = [];
             for (row = 0 ; row < 3 ; row++) {
                 columnCheck.push(gameBoard[row][col]);
-                console.log(columnCheck);
                 if (gameBoard[row][col] === "E") break;
             }
             if (columnCheck.every((item) => item == "X") || columnCheck.every((item) => item == "O")) {
