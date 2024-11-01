@@ -46,6 +46,14 @@ const gameFlow = (function () {
             gameTurn(e.target.dataset.x, e.target.dataset.y);
     });
 
+    resetButton.addEventListener("click", function() {
+        allSquares.forEach((square) => {
+            render(``, square);
+        })
+        resetDialog.close();
+        resetGame();
+    })
+
     function whosTurnIsIt() {
 
         console.log(`It's ${playersArray[playerTurn - 1].name}'s turn!`);
