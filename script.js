@@ -6,6 +6,7 @@ const gameFlow = (function () {
     const allSquares = document.querySelectorAll(".square");
     const resetDialog = document.querySelector("dialog");
     const resetButton = document.querySelector("button");
+    const dialogText = document.querySelector(".whoWon");
 
     function render(what, where) {
 
@@ -125,6 +126,8 @@ const gameFlow = (function () {
     }
 
     function endGame(whoWon) {
+        resetDialog.showModal();
+        render(`Congratulations ${whoWon}!! You won! Would you like to play again?`, dialogText);
         console.log(`Congratulations ${whoWon}!! You won! Would you like to play again? Just use the reset command.`);
     }
 
